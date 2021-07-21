@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">FirebaseTechTalk</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_main_actions">MainActivity</string>
+    <string name="title_database">Database</string>
+    <string name="title_cloud_function">Cloud Function</string>
+    <string name="title_notifications">Push Notifications</string>
+    <string name="write_in_db">Write in db</string>
+    <string name="trigger_cloud_function">Trigger cloud function</string>
+    <string name="trigger_push_notification">Trigger push notification</string>
+</resources>
