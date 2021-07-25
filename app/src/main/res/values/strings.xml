@@ -14,9 +14,11 @@
     <string name="title_cloud_function">Cloud Function</string>
     <string name="title_notifications">Push Notifications</string>
     <string name="write_in_db">Write in db</string>
-    <string name="trigger_cloud_function">Trigger cloud function</string>
+    <string name="trigger_cloud_function">Prueba cloud function</string>
     <string name="trigger_push_notification">Trigger push notification</string>
     <string name="log_out">Log out</string>
     <string name="sign_out">Signing out</string>
     <string name="read_from_db">Read from Db</string>
+    <string name="default_notification_channel_id">EXAMPLE_CHANNEL</string>
+    <string name="msg_token_fmt" translatable="false">FCM registration Token: %s</string>
 </resources>

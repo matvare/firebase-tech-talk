@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -24,12 +25,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.matvare.firebasetechtalk.R;
+import com.matvare.firebasetechtalk.data.LoginDataSource;
+import com.matvare.firebasetechtalk.data.LoginRepository;
+import com.matvare.firebasetechtalk.data.model.LoggedInUser;
 import com.matvare.firebasetechtalk.ui.authenticated.MainActionsActivity;
 import com.matvare.firebasetechtalk.ui.login.LoginViewModel;
 import com.matvare.firebasetechtalk.ui.login.LoginViewModelFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TAG = LoginActivity.class.getSimpleName();
     private LoginViewModel loginViewModel;
 
     @Override
@@ -119,6 +124,19 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        boolean isLoggedIn = LoginRepository.getInstance(new LoginDataSource()).isLoggedIn();
+        if (isLoggedIn) {
+            Log.d(TAG, "Already logged in");
+            Intent intent = new Intent(this, MainActionsActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
