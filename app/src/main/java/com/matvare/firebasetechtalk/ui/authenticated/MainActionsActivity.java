@@ -8,13 +8,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.matvare.firebasetechtalk.R;
 import com.matvare.firebasetechtalk.data.LoginDataSource;
 import com.matvare.firebasetechtalk.data.LoginRepository;
 import com.matvare.firebasetechtalk.ui.authenticated.database.FirestoreExample;
 import com.matvare.firebasetechtalk.ui.login.LoginActivity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -78,6 +82,24 @@ public class MainActionsActivity extends AppCompatActivity {
     }
 
     public void triggerPushNotificiation(View view) {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+                        String msg = getString(R.string.msg_token_fmt, token);
+                        Log.d(TAG, msg);
+                        Toast.makeText(MainActionsActivity.this, msg, Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
 
