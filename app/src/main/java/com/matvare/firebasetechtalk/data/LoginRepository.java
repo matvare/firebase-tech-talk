@@ -53,4 +53,8 @@ public class LoginRepository {
             listener.onResult(result);
         });
     }
+
+    public LoggedInUser getUser() {
+        return user;
+    }
 }

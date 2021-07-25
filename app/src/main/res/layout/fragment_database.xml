@@ -25,6 +25,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/text_database"
-        android:text="@string/write_in_db">
+        android:text="@string/write_in_db"
+        android:onClick="writeInDatabaseExample">
+    </Button>
+
+    <Button
+        android:id="@+id/read_from_database"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/write_in_database"
+        android:text="@string/read_from_db"
+        android:onClick="readFromDatabaseExample">
     </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,14 +2,17 @@ package com.matvare.firebasetechtalk.ui.authenticated;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.matvare.firebasetechtalk.R;
 import com.matvare.firebasetechtalk.data.LoginDataSource;
 import com.matvare.firebasetechtalk.data.LoginRepository;
+import com.matvare.firebasetechtalk.ui.authenticated.database.FirestoreExample;
 import com.matvare.firebasetechtalk.ui.login.LoginActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActionsActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActionsActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,7 @@ public class MainActionsActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.logout) {
+            Log.d(TAG, "Click logout");
             LoginRepository.getInstance(new LoginDataSource()).logout();
             Toast.makeText(getApplicationContext(), R.string.sign_out, Toast.LENGTH_LONG).show();
             finish();
@@ -57,5 +63,22 @@ public class MainActionsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void writeInDatabaseExample(View view) {
+        Log.d(TAG, "writeInDatabaseExample");
+        FirestoreExample.writeInFirestore();
+    }
+
+    public void readFromDatabaseExample(View view) {
+        Log.d(TAG, "readFromDatabaseExample");
+        FirestoreExample.readFromFirestore();
+    }
+
+    public void triggerCloudFunction(View view) {
+    }
+
+    public void triggerPushNotificiation(View view) {
+    }
+
 
 }
