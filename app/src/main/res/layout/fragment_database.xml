@@ -21,9 +21,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/write_in_database"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/text_database"
-        android:text="@string/trigger_cloud_function">
+        android:text="@string/write_in_db">
     </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -61,7 +61,13 @@ public class LoginDataSource {
     }
 
     public void logout() {
-        FirebaseAuth.getInstance().signOut();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            Log.d(TAG, "logout current user: " + user.getEmail());
+            FirebaseAuth.getInstance().signOut();
+        } else {
+            Log.d(TAG, "User is null. Cannot log out.");
+        }
     }
 
     private void loginExistingUser(String email, String password, OnLoginResult resultListener) {
