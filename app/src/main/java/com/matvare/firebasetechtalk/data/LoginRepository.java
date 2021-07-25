@@ -1,6 +1,7 @@
 package com.matvare.firebasetechtalk.data;
 
 import com.matvare.firebasetechtalk.data.model.LoggedInUser;
+import com.matvare.firebasetechtalk.ui.login.OnLoginResult;
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -43,12 +44,13 @@ public class LoginRepository {
         // @see https://developer.android.com/training/articles/keystore
     }
 
-    public Result<LoggedInUser> login(String username, String password) {
+    public void login(String username, String password, OnLoginResult listener) {
         // handle login
-        Result<LoggedInUser> result = dataSource.login(username, password);
-        if (result instanceof Result.Success) {
-            setLoggedInUser(((Result.Success<LoggedInUser>) result).getData());
-        }
-        return result;
+        dataSource.login(username, password, result -> {
+            if (result instanceof Result.Success) {
+                setLoggedInUser(((Result.Success<LoggedInUser>) result).getData());
+            }
+            listener.onResult(result);
+        });
     }
 }
