@@ -25,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/text_notifications"
-        android:text="@string/trigger_push_notification">
+        android:text="@string/trigger_push_notification"
+        android:onClick="triggerPushNotificiation">
     </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

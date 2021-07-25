@@ -18,4 +18,5 @@
     <string name="trigger_push_notification">Trigger push notification</string>
     <string name="log_out">Log out</string>
     <string name="sign_out">Signing out</string>
+    <string name="read_from_db">Read from Db</string>
 </resources>
