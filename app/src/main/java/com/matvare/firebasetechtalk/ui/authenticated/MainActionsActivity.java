@@ -15,6 +15,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.matvare.firebasetechtalk.R;
 import com.matvare.firebasetechtalk.data.LoginDataSource;
 import com.matvare.firebasetechtalk.data.LoginRepository;
+import com.matvare.firebasetechtalk.ui.authenticated.cloudfunction.CloudFunctionExample;
 import com.matvare.firebasetechtalk.ui.authenticated.database.FirestoreExample;
 import com.matvare.firebasetechtalk.ui.login.LoginActivity;
 
@@ -79,6 +80,7 @@ public class MainActionsActivity extends AppCompatActivity {
     }
 
     public void triggerCloudFunction(View view) {
+        CloudFunctionExample.callCloudFunctionWithListener();
     }
 
     public void triggerPushNotificiation(View view) {
