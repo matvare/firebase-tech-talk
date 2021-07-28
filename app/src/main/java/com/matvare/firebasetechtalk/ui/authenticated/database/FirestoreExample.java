@@ -57,6 +57,7 @@ public class FirestoreExample {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        // task = null; // force crash
                         if (task.isSuccessful()) {
                             if (task.getResult() != null) {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
